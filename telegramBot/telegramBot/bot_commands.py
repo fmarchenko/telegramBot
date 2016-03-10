@@ -9,10 +9,14 @@ __date__ = "Mar 10, 2016"
 class Commands(object):
     _instance = None
     _commands = {}
+
     def __new__(cls, *args, **kwargs):
         if not cls._instance:
             cls._instance = super(Commands, cls).__new__(cls, *args, **kwargs)
         return cls._instance
+
+    def __iter__(self):
+        return self._commands.__iter__()
 
     @staticmethod
     def register(name):
@@ -34,10 +38,11 @@ def help_message(message, args):
     response = {'chat_id': message['chat']['id']}
     result = [
         "Hey, %s!" % message['from'].get('first_name'),
-        "\rI can accept only these commands:"
+        "I can accept only these commands:"
     ]
-
-    for command in Commands:
+    for command in Commands():
         result.append(command)
-    response['text'] = "\n\t".join(result)
+    response['text'] = "\n".join(result)
     return response
+Commands.register("/h")(help_message)
+Commands.register("/start")(help_message)

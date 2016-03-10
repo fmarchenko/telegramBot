@@ -8,13 +8,13 @@ __date__ = "Mar 10, 2016"
 import sys
 from telegramBot import settings
 from telegramBot.options import parser
-from telegramBot.commands import shell, migrate
 from telegramBot.application import app
 
 # Main code
 def main():
     import django
     django.setup()
+    from telegramBot.commands import shell, migrate, puller
     if len(sys.argv) <= 1:
         parser.print_help()
         exit(0)
@@ -27,7 +27,9 @@ def main():
         migrate()
     if opts.cmd == "start":
         app.debug = settings.settings.DEBUG
-        app.run(host='localhost', port=8000)
+        app.run(host=settings.BOT_HOST, port=settings.BOT_PORT)
+    if opts.cmd == "puller":
+        puller()
 
 
 if __name__ == "__main__":
