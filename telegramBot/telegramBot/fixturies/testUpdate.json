@@ -1,0 +1,35 @@
+{"ok":true,"result":[
+  {
+    "update_id":136952793,
+    "message":{
+      "message_id":49,
+      "from":{
+        "id":106906974,"first_name":"Fedor","last_name":"Marchenko","username":"fmarchenko"
+      },
+      "chat":{
+        "id":106906974,"first_name":"Fedor","last_name":"Marchenko","username":"fmarchenko","type":"private"
+      },
+      "date":1457680211,
+      "text":"help"
+    }
+  },
+  {
+    "update_id": 136952812,
+    "message": {
+      "message_id": 75,
+      "from": {
+        "username": "fmarchenko", "first_name": "Fedor", "last_name": "Marchenko", "id": 106906974
+      },
+      "chat": {
+        "username": "fmarchenko", "first_name": "Fedor", "last_name": "Marchenko", "type": "private", "id": 106906974
+      },
+      "date": 1457700270,
+      "photo": [
+        {"width": 90, "height": 60, "file_id": "AgADAgADracxG15FXwZ7Z9RXU3nc2V3ZgioABKcGLsHlRWtr398AAgI", "file_size": 1556},
+        {"width": 320, "height": 213, "file_id": "AgADAgADracxG15FXwZ7Z9RXU3nc2V3ZgioABCw7F-VwjpRh4N8AAgI", "file_size": 19602},
+        {"width": 800, "height": 533, "file_id": "AgADAgADracxG15FXwZ7Z9RXU3nc2V3ZgioABM42vw68lpOr4d8AAgI", "file_size": 80514}
+      ],
+      "caption": "dsfdsgdfgfdg"
+    }
+  }
+]}

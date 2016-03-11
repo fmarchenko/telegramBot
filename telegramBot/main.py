@@ -6,14 +6,14 @@ __email__ = "mfs90@mail.ru"
 __date__ = "Mar 10, 2016"
 
 import sys
+import django
 from telegramBot import settings
+django.setup()
 from telegramBot.options import parser
 from telegramBot.application import app
 
 # Main code
 def main():
-    import django
-    django.setup()
     from telegramBot.commands import shell, migrate, puller
     if len(sys.argv) <= 1:
         parser.print_help()

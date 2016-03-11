@@ -10,4 +10,4 @@ import argparse
 parser = argparse.ArgumentParser()
 parser.add_argument('-s', action='store_true', help="run env shell")
 parser.add_argument('-m', action='store_true', help="run migrations")
-parser.add_argument('cmd', help="run command", default="")
+parser.add_argument('cmd', nargs='?', default="", help="run command")
