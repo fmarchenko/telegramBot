@@ -65,8 +65,16 @@ def puller():
                     logging.error('Unknown update: %s' % update)
                     continue
                 from_id = update['message']['chat']['id']
-                name = update['message']['chat']['username']
-                if from_id <> settings.BOT_ADMIN_ID:
+                if update['message']['chat']['type'] == 'group':
+                    name = update['message']['chat']['title']
+                else:
+                    name = update['message']['chat']['username']
+                accept = False
+                if isinstance(settings.BOT_ADMIN_ID, (tuple, list)):
+                    accept = from_id in settings.BOT_ADMIN_ID
+                else:
+                    accept = from_id == settings.BOT_ADMIN_ID
+                if not accept:
                     send_reply({'chat_id': from_id, 'text': "You're not autorized to use me!"})
                     logging.info('Unautorized: %s' % update)
                     continue
@@ -85,6 +93,9 @@ def puller():
         except KeyboardInterrupt:
             logging.info('Прервано пользователем..')
             break
+        except Exception as ex:
+            logging.error("%s\t%s with data %s" % (ex, "http://%s:%d/" % (settings.BOT_HOST, settings.BOT_PORT), update))
+            continue
         time.sleep(settings.BOT_INTERVAL)
 
     # try:
